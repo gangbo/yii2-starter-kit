@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\i18n\models\search\I18nMessageSearch */
@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'I18n Message',
-]), ['create'], ['class' => 'btn btn-success']) ?>
+            'modelClass' => 'I18n Message',
+        ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php echo GridView::widget([
@@ -27,16 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             [
-                'attribute'=>'language',
-                'filter'=> $languages
+                'attribute' => 'language',
+                'filter' => $languages
             ],
             [
-                'attribute'=>'category',
-                'filter'=> $categories
+                'attribute' => 'category',
+                'filter' => $categories
             ],
             'sourceMessage',
             'translation:ntext',
-            ['class' => 'yii\grid\ActionColumn', 'template'=>'{update} {delete}'],
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}'],
         ],
     ]); ?>
 

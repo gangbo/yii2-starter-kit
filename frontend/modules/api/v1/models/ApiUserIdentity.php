@@ -42,6 +42,15 @@ class ApiUserIdentity extends User implements RateLimitInterface
     }
 
     /**
+     * @param $key
+     * @return array
+     */
+    public function getCacheKey($key)
+    {
+        return [__CLASS__, $this->getId(), $key];
+    }
+
+    /**
      * Saves the number of allowed requests and the corresponding timestamp to a persistent storage.
      * @param \yii\web\Request $request the current request
      * @param \yii\base\Action $action the action to be executed
@@ -52,14 +61,5 @@ class ApiUserIdentity extends User implements RateLimitInterface
     {
         \Yii::$app->cache->set($this->getCacheKey('api_rate_allowance'), $allowance, $this->rateWindowSize);
         \Yii::$app->cache->set($this->getCacheKey('api_rate_timestamp'), $timestamp, $this->rateWindowSize);
-    }
-
-    /**
-     * @param $key
-     * @return array
-     */
-    public function getCacheKey($key)
-    {
-        return [__CLASS__, $this->getId(), $key];
     }
 }

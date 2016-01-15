@@ -1,6 +1,5 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -49,7 +48,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             [
                 'attribute' => 'component',
                 'filter' => $components
@@ -60,7 +58,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'upload_ip',
             'created_at:datetime',
-
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {delete}'

@@ -9,7 +9,6 @@ use Yii;
 use yii\caching\Cache;
 use yii\caching\TagDependency;
 use yii\data\ArrayDataProvider;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\HttpException;
 
@@ -24,8 +23,8 @@ class CacheController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ArrayDataProvider(['allModels'=>$this->findCaches()]);
-        return $this->render('index', ['dataProvider'=>$dataProvider]);
+        $dataProvider = new ArrayDataProvider(['allModels' => $this->findCaches()]);
+        return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
     /**
@@ -37,8 +36,8 @@ class CacheController extends Controller
     {
         if ($this->getCache($id)->flush()) {
             Yii::$app->session->setFlash('alert', [
-                'body'=>\Yii::t('backend', 'Cache has been successfully flushed'),
-                'options'=>['class'=>'alert-success']
+                'body' => \Yii::t('backend', 'Cache has been successfully flushed'),
+                'options' => ['class' => 'alert-success']
             ]);
         };
         return $this->redirect(['index']);
@@ -54,8 +53,8 @@ class CacheController extends Controller
     {
         if ($this->getCache($id)->delete($key)) {
             Yii::$app->session->setFlash('alert', [
-                'body'=>\Yii::t('backend', 'Cache entry has been successfully deleted'),
-                'options'=>['class'=>'alert-success']
+                'body' => \Yii::t('backend', 'Cache entry has been successfully deleted'),
+                'options' => ['class' => 'alert-success']
             ]);
         };
         return $this->redirect(['index']);
@@ -71,8 +70,8 @@ class CacheController extends Controller
     {
         TagDependency::invalidate($this->getCache($id), $tag);
         Yii::$app->session->setFlash('alert', [
-            'body'=>\Yii::t('backend', 'TagDependency was invalidated'),
-            'options'=>['class'=>'alert-success']
+            'body' => \Yii::t('backend', 'TagDependency was invalidated'),
+            'options' => ['class' => 'alert-success']
         ]);
         return $this->redirect(['index']);
     }
@@ -108,11 +107,11 @@ class CacheController extends Controller
             }
 
             if ($component instanceof Cache) {
-                $caches[$name] = ['name'=>$name, 'class'=>get_class($component)];
+                $caches[$name] = ['name' => $name, 'class' => get_class($component)];
             } elseif (is_array($component) && isset($component['class']) && $this->isCacheClass($component['class'])) {
-                $caches[$name] = ['name'=>$name, 'class'=>$component['class']];
+                $caches[$name] = ['name' => $name, 'class' => $component['class']];
             } elseif (is_string($component) && $this->isCacheClass($component)) {
-                $caches[$name] = ['name'=>$name, 'class'=>$component];
+                $caches[$name] = ['name' => $name, 'class' => $component];
             }
         }
 

@@ -2,13 +2,13 @@
 
 namespace backend\controllers;
 
-use Yii;
-use common\models\Article;
 use backend\models\search\ArticleSearch;
-use \common\models\ArticleCategory;
+use common\models\Article;
+use common\models\ArticleCategory;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ArticleController implements the CRUD actions for Article model.
@@ -36,7 +36,7 @@ class ArticleController extends Controller
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = [
-            'defaultOrder'=>['published_at'=>SORT_DESC]
+            'defaultOrder' => ['published_at' => SORT_DESC]
         ];
         return $this->render('index', [
             'searchModel' => $searchModel,

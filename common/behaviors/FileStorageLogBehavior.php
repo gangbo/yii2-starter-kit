@@ -1,11 +1,11 @@
 <?php
 namespace common\behaviors;
 
+use common\models\FileStorageItem;
 use League\Flysystem\File;
+use trntv\filekit\Storage;
 use Yii;
 use yii\base\Behavior;
-use trntv\filekit\Storage;
-use common\models\FileStorageItem;
 use yii\base\InvalidConfigException;
 
 /**

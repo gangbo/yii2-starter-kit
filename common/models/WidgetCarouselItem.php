@@ -59,7 +59,7 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
                 'baseUrlAttribute' => 'base_url',
                 'typeAttribute' => 'type'
             ],
-            'cacheInvalidate'=>[
+            'cacheInvalidate' => [
                 'class' => CacheInvalidateBehavior::className(),
                 'cacheComponent' => 'frontendCache',
                 'keys' => [

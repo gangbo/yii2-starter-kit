@@ -4,7 +4,7 @@
  */
 
 $envs = parse_ini_file(dirname(__DIR__) . '/.env.ini', true, true);
-foreach($envs as $k=>$v) {
+foreach ($envs as $k => $v) {
     putenv("$k=$v");
 }
 

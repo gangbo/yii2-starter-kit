@@ -10,8 +10,9 @@ use yii\helpers\Html;
 <div class="article-item row">
     <div class="col-xs-12">
         <h2 class="article-title">
-            <?php echo Html::a($model->title, ['view', 'slug'=>$model->slug]) ?>
+            <?php echo Html::a($model->title, ['view', 'slug' => $model->slug]) ?>
         </h2>
+
         <div class="article-meta">
             <span class="article-date">
                 <?php echo Yii::$app->formatter->asDatetime($model->created_at) ?>
@@ -20,7 +21,7 @@ use yii\helpers\Html;
                 <?php echo Html::a(
                     $model->category->title,
                     ['index', 'ArticleSearch[category_id]' => $model->category_id]
-                )?>
+                ) ?>
             </span>
         </div>
         <div class="article-content">

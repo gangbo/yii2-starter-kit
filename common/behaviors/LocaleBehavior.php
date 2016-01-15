@@ -2,8 +2,8 @@
 
 namespace common\behaviors;
 
-use yii\base\Behavior;
 use Yii;
+use yii\base\Behavior;
 use yii\web\Application;
 
 /**
@@ -21,6 +21,7 @@ class LocaleBehavior extends Behavior
      * @var bool
      */
     public $enablePreferredLanguage = true;
+
     /**
      * @return array
      */

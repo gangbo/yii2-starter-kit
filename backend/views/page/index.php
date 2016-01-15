@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel \backend\models\search\PageSearch */
@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Page',
-]), ['create'], ['class' => 'btn btn-success']) ?>
+            'modelClass' => 'Page',
+        ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php echo GridView::widget([
@@ -28,10 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'slug',
             'status',
-
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{update} {delete}'
+                'template' => '{update} {delete}'
             ],
         ],
     ]); ?>

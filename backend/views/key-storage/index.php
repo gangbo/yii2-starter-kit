@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\KeyStorageItemSearch */
@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Key Storage Item',
-]), ['create'], ['class' => 'btn btn-success']) ?>
+            'modelClass' => 'Key Storage Item',
+        ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php echo GridView::widget([
@@ -25,13 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'key',
             'value',
-
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{update} {delete}'
+                'template' => '{update} {delete}'
             ],
         ],
     ]); ?>

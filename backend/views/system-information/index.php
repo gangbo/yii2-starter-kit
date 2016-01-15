@@ -19,8 +19,10 @@ $this->registerJsFile(
             <div class="box box-primary">
                 <div class="box-header">
                     <i class="fa fa-hdd-o"></i>
+
                     <h3 class="box-title"><?php echo Yii::t('backend', 'Processor') ?></h3>
-                </div><!-- /.box-header -->
+                </div>
+                <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <dt><?php echo Yii::t('backend', 'Processor') ?></dt>
@@ -32,15 +34,18 @@ $this->registerJsFile(
                         <dt><?php echo Yii::t('backend', 'Number of cores') ?></dt>
                         <dd><?php echo $provider->getCpuCores() ?></dd>
                     </dl>
-                </div><!-- /.box-body -->
+                </div>
+                <!-- /.box-body -->
             </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="box box-primary">
                 <div class="box-header">
                     <i class="fa fa-hdd-o"></i>
+
                     <h3 class="box-title"><?php echo Yii::t('backend', 'Operating System') ?></h3>
-                </div><!-- /.box-header -->
+                </div>
+                <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <dt><?php echo Yii::t('backend', 'OS') ?></dt>
@@ -52,15 +57,18 @@ $this->registerJsFile(
                         <dt><?php echo Yii::t('backend', 'Kernel version') ?></dt>
                         <dd><?php echo $provider->getOsKernelVersion() ?></dd>
                     </dl>
-                </div><!-- /.box-body -->
+                </div>
+                <!-- /.box-body -->
             </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="box box-primary">
                 <div class="box-header">
                     <i class="fa fa-hdd-o"></i>
+
                     <h3 class="box-title"><?php echo Yii::t('backend', 'Time') ?></h3>
-                </div><!-- /.box-header -->
+                </div>
+                <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <dt><?php echo Yii::t('backend', 'System Date') ?></dt>
@@ -72,15 +80,18 @@ $this->registerJsFile(
                         <dt><?php echo Yii::t('backend', 'Timezone') ?></dt>
                         <dd><?php echo date_default_timezone_get() ?></dd>
                     </dl>
-                </div><!-- /.box-body -->
+                </div>
+                <!-- /.box-body -->
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="box box-primary">
                 <div class="box-header">
                     <i class="fa fa-hdd-o"></i>
+
                     <h3 class="box-title"><?php echo Yii::t('backend', 'Network') ?></h3>
-                </div><!-- /.box-header -->
+                </div>
+                <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <dt><?php echo Yii::t('backend', 'Hostname') ?></dt>
@@ -95,15 +106,18 @@ $this->registerJsFile(
                         <dt><?php echo Yii::t('backend', 'Port') ?></dt>
                         <dd><?php echo $provider->getServerVariable('SERVER_PORT') ?></dd>
                     </dl>
-                </div><!-- /.box-body -->
+                </div>
+                <!-- /.box-body -->
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="box box-primary">
                 <div class="box-header">
                     <i class="fa fa-hdd-o"></i>
+
                     <h3 class="box-title"><?php echo Yii::t('backend', 'Software') ?></h3>
-                </div><!-- /.box-header -->
+                </div>
+                <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <dt><?php echo Yii::t('backend', 'Web Server') ?></dt>
@@ -118,15 +132,18 @@ $this->registerJsFile(
                         <dt><?php echo Yii::t('backend', 'DB Version') ?></dt>
                         <dd><?php echo $provider->getDbVersion(Yii::$app->db->pdo) ?></dd>
                     </dl>
-                </div><!-- /.box-body -->
+                </div>
+                <!-- /.box-body -->
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="box box-primary">
                 <div class="box-header">
                     <i class="fa fa-hdd-o"></i>
+
                     <h3 class="box-title"><?php echo Yii::t('backend', 'Memory') ?></h3>
-                </div><!-- /.box-header -->
+                </div>
+                <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <dt><?php echo Yii::t('backend', 'Total memory') ?></dt>
@@ -141,7 +158,8 @@ $this->registerJsFile(
                         <dt><?php echo Yii::t('backend', 'Free Swap') ?></dt>
                         <dd><?php echo Yii::$app->formatter->asSize($provider->getFreeSwap()) ?></dd>
                     </dl>
-                </div><!-- /.box-body -->
+                </div>
+                <!-- /.box-body -->
             </div>
         </div>
     </div>
@@ -153,6 +171,7 @@ $this->registerJsFile(
                     <h3>
                         <?php echo gmdate('H:i:s', $provider->getUptime()) ?>
                     </h3>
+
                     <p>
                         <?php echo Yii::t('backend', 'Uptime') ?>
                     </p>
@@ -164,7 +183,8 @@ $this->registerJsFile(
                     &nbsp;
                 </div>
             </div>
-        </div><!-- ./col -->
+        </div>
+        <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-aqua">
@@ -172,6 +192,7 @@ $this->registerJsFile(
                     <h3>
                         <?php echo $provider->getLoadAverage() ?>
                     </h3>
+
                     <p>
                         <?php echo Yii::t('backend', 'Load average') ?>
                     </p>
@@ -183,7 +204,8 @@ $this->registerJsFile(
                     &nbsp;
                 </div>
             </div>
-        </div><!-- ./col -->
+        </div>
+        <!-- ./col -->
 
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
@@ -192,6 +214,7 @@ $this->registerJsFile(
                     <h3>
                         <?php echo User::find()->count() ?>
                     </h3>
+
                     <p>
                         <?php echo Yii::t('backend', 'User Registrations') ?>
                     </p>
@@ -203,7 +226,8 @@ $this->registerJsFile(
                     <?php echo Yii::t('backend', 'More info') ?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
-        </div><!-- ./col -->
+        </div>
+        <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-red">
@@ -211,6 +235,7 @@ $this->registerJsFile(
                     <h3>
                         <?php echo FileStorageItem::find()->count() ?>
                     </h3>
+
                     <p>
                         <?php echo Yii::t('backend', 'Files in storage') ?>
                     </p>
@@ -218,11 +243,13 @@ $this->registerJsFile(
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="<?php echo Yii::$app->urlManager->createUrl(['/file-storage/index']) ?>" class="small-box-footer">
+                <a href="<?php echo Yii::$app->urlManager->createUrl(['/file-storage/index']) ?>"
+                   class="small-box-footer">
                     <?php echo Yii::t('backend', 'More info') ?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
-        </div><!-- ./col -->
+        </div>
+        <!-- ./col -->
     </div>
     <div class="row">
         <div class="col-xs-12">
@@ -231,6 +258,7 @@ $this->registerJsFile(
                     <h3 class="box-title">
                         <?php echo Yii::t('backend', 'CPU Usage') ?>
                     </h3>
+
                     <div class="box-tools pull-right">
                         <?php echo Yii::t('backend', 'Real time') ?>
                         <div class="realtime btn-group" data-toggle="btn-toggle">
@@ -246,7 +274,8 @@ $this->registerJsFile(
                 <div class="box-body">
                     <div class="chart" style="height: 300px;">
                     </div>
-                </div><!-- /.box-body-->
+                </div>
+                <!-- /.box-body-->
             </div>
         </div>
     </div>
@@ -257,6 +286,7 @@ $this->registerJsFile(
                     <h3 class="box-title">
                         <?php echo Yii::t('backend', 'Memory Usage') ?>
                     </h3>
+
                     <div class="box-tools pull-right">
                         <?php echo Yii::t('backend', 'Real time') ?>
                         <div class="btn-group realtime" data-toggle="btn-toggle">
@@ -272,7 +302,8 @@ $this->registerJsFile(
                 <div class="box-body">
                     <div class="chart" style="height: 300px;">
                     </div>
-                </div><!-- /.box-body-->
+                </div>
+                <!-- /.box-body-->
             </div>
         </div>
     </div>

@@ -83,8 +83,12 @@ class User extends ActiveRecord implements IdentityInterface
         return ArrayHelper::merge(
             parent::scenarios(),
             [
-                'oauth_create'=>[
-                    'oauth_client', 'oauth_client_user_id', 'email', 'username', '!status'
+                'oauth_create' => [
+                    'oauth_client',
+                    'oauth_client_user_id',
+                    'email',
+                    'username',
+                    '!status'
                 ]
             ]
         );
@@ -100,7 +104,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['username', 'email'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-            [['username'],'filter','filter'=>'\yii\helpers\Html::encode']
+            [['username'], 'filter', 'filter' => '\yii\helpers\Html::encode']
         ];
     }
 
@@ -125,7 +129,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getUserProfile()
     {
-        return $this->hasOne(UserProfile::className(), ['user_id'=>'id']);
+        return $this->hasOne(UserProfile::className(), ['user_id' => 'id']);
     }
 
     /**
@@ -180,7 +184,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $expire = Time::SECONDS_IN_A_DAY;
         $parts = explode('_', $token);
-        $timestamp = (int) end($parts);
+        $timestamp = (int)end($parts);
         if ($timestamp + $expire < time()) {
             // token expired
             return null;
@@ -289,7 +293,7 @@ class User extends ActiveRecord implements IdentityInterface
         $this->link('userProfile', $profile);
         $this->trigger(self::EVENT_AFTER_SIGNUP);
         // Default role
-        $auth =  Yii::$app->authManager;
+        $auth = Yii::$app->authManager;
         $auth->assign($auth->getRole(User::ROLE_USER), $this->getId());
     }
 

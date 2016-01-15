@@ -2,8 +2,8 @@
 namespace frontend\modules\user\models;
 
 use common\commands\command\SendEmailCommand;
-use Yii;
 use common\models\User;
+use Yii;
 use yii\base\Model;
 
 /**
@@ -22,7 +22,9 @@ class PasswordResetRequestForm extends Model
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
-            ['email', 'exist',
+            [
+                'email',
+                'exist',
                 'targetClass' => '\common\models\User',
                 'filter' => ['status' => User::STATUS_ACTIVE],
                 'message' => 'There is no user with such email.'
@@ -49,7 +51,7 @@ class PasswordResetRequestForm extends Model
                 return Yii::$app->commandBus->handle(new SendEmailCommand([
                     'from' => [Yii::$app->params['adminEmail'] => Yii::$app->name],
                     'to' => $this->email,
-                    'subject' => Yii::t('frontend', 'Password reset for {name}', ['name'=>Yii::$app->name]),
+                    'subject' => Yii::t('frontend', 'Password reset for {name}', ['name' => Yii::$app->name]),
                     'view' => 'passwordResetToken',
                     'params' => ['user' => $user]
                 ]));
@@ -62,7 +64,7 @@ class PasswordResetRequestForm extends Model
     public function attributeLabels()
     {
         return [
-            'email'=>Yii::t('frontend', 'E-mail')
+            'email' => Yii::t('frontend', 'E-mail')
         ];
     }
 }

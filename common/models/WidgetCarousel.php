@@ -33,7 +33,7 @@ class WidgetCarousel extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            'cacheInvalidate'=>[
+            'cacheInvalidate' => [
                 'class' => CacheInvalidateBehavior::className(),
                 'cacheComponent' => 'frontendCache',
                 'keys' => [

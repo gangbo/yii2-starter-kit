@@ -23,6 +23,7 @@ $this->title = $name;
                         ])
                     ?>
                 </h3>
+
                 <p>
                     <?php echo nl2br(Html::encode($message)) ?>
                 </p>

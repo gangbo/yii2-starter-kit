@@ -13,14 +13,12 @@ return [
     'jsCompressor' => 'uglifyjs {from} -o {to}',
     // Adjust command/callback for CSS files compressing:
     'cssCompressor' => 'yuicompressor --type css {from} -o {to}',
-
     // The list of asset bundles to compress:
     'bundles' => [
         'frontend\assets\FrontendAsset',
         'yii\web\YiiAsset',
         'yii\web\JqueryAsset',
     ],
-
     // Asset bundle for compression output:
     'targets' => [
         'all' => [
@@ -31,7 +29,6 @@ return [
             'css' => 'bundle/{hash}.css',
         ],
     ],
-
     // Asset manager configuration:
     'assetManager' => [
         'basePath' => '@webroot/assets',

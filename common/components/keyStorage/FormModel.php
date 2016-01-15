@@ -105,7 +105,7 @@ class FormModel extends Model
     {
         $rules = [];
         foreach ($this->keys as $attribute => $data) {
-            $attributeRules =  ArrayHelper::getValue($data, 'rules', []);
+            $attributeRules = ArrayHelper::getValue($data, 'rules', []);
             if (!empty($attributeRules)) {
                 foreach ($attributeRules as $rule) {
                     array_unshift($rule, $attribute);

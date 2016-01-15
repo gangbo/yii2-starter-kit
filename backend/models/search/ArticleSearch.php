@@ -2,10 +2,10 @@
 
 namespace backend\models\search;
 
+use common\models\Article;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Article;
 
 /**
  * ArticleSearch represents the model behind the search form about `common\models\Article`.
@@ -18,7 +18,10 @@ class ArticleSearch extends Article
     public function rules()
     {
         return [
-            [['id', 'category_id', 'author_id', 'updater_id', 'status', 'published_at', 'created_at', 'updated_at'], 'integer'],
+            [
+                ['id', 'category_id', 'author_id', 'updater_id', 'status', 'published_at', 'created_at', 'updated_at'],
+                'integer'
+            ],
             [['slug', 'title', 'body'], 'safe'],
         ];
     }

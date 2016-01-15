@@ -3,15 +3,12 @@
 namespace backend\controllers;
 
 use backend\models\search\WidgetCarouselItemSearch;
-use Yii;
-use common\models\WidgetCarousel;
-use common\models\WidgetCarouselItem;
 use backend\models\search\WidgetCarouselSearch;
+use common\models\WidgetCarousel;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use yii\web\Response;
-use yii\web\UploadedFile;
 
 /**
  * WidgetCarouselController implements the CRUD actions for WidgetCarousel model.
@@ -76,14 +73,14 @@ class WidgetCarouselController extends Controller
 
         $searchModel = new WidgetCarouselItemSearch();
         $carouselItemsProvider = $searchModel->search([]);
-        $carouselItemsProvider->query->andWhere(['carousel_id'=>$model->id]);
+        $carouselItemsProvider->query->andWhere(['carousel_id' => $model->id]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'carouselItemsProvider'=>$carouselItemsProvider
+                'carouselItemsProvider' => $carouselItemsProvider
             ]);
         }
     }

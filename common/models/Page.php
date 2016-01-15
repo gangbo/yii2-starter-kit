@@ -38,11 +38,11 @@ class Page extends \yii\db\ActiveRecord
     {
         return [
             TimestampBehavior::className(),
-            'slug'=>[
-                'class'=>SluggableBehavior::className(),
-                'attribute'=>'title',
-                'ensureUnique'=>true,
-                'immutable'=>true
+            'slug' => [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'title',
+                'ensureUnique' => true,
+                'immutable' => true
             ]
         ];
     }

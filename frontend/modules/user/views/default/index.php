@@ -22,7 +22,7 @@ $this->title = Yii::t('frontend', 'User Settings')
         [
             'url' => ['avatar-upload']
         ]
-    )?>
+    ) ?>
 
     <?php echo $form->field($model->getModel('profile'), 'firstname')->textInput(['maxlength' => 255]) ?>
 
@@ -30,7 +30,8 @@ $this->title = Yii::t('frontend', 'User Settings')
 
     <?php echo $form->field($model->getModel('profile'), 'lastname')->textInput(['maxlength' => 255]) ?>
 
-    <?php echo $form->field($model->getModel('profile'), 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
+    <?php echo $form->field($model->getModel('profile'),
+        'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
 
     <?php echo $form->field($model->getModel('profile'), 'gender')->dropDownlist([
         \common\models\UserProfile::GENDER_FEMALE => Yii::t('frontend', 'Female'),

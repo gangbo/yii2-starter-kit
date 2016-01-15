@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\WidgetText */
@@ -19,13 +19,13 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'body')->widget(\yii\imperavi\Widget::className(), [
         // More options, see http://imperavi.com/redactor/docs/
         'plugins' => ['fullscreen', 'fontcolor', 'video'],
-        'options'=>[
-            'minHeight'=>400,
-            'maxHeight'=>400,
-            'buttonSource'=>true,
-            'convertDivs'=>false,
-            'removeEmptyTags'=>false,
-            'imageUpload'=>Yii::$app->urlManager->createUrl(['/file-storage/upload-imperavi'])
+        'options' => [
+            'minHeight' => 400,
+            'maxHeight' => 400,
+            'buttonSource' => true,
+            'convertDivs' => false,
+            'removeEmptyTags' => false,
+            'imageUpload' => Yii::$app->urlManager->createUrl(['/file-storage/upload-imperavi'])
 
         ]
     ]) ?>

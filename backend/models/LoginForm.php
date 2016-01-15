@@ -4,7 +4,6 @@ namespace backend\models;
 use cheatsheet\Time;
 use common\models\User;
 use Yii;
-use yii\base\Exception;
 use yii\base\Model;
 use yii\web\ForbiddenHttpException;
 
@@ -91,7 +90,7 @@ class LoginForm extends Model
     {
         if ($this->user === false) {
             $this->user = User::find()
-                ->andWhere(['or', ['username'=>$this->username], ['email'=>$this->username]])
+                ->andWhere(['or', ['username' => $this->username], ['email' => $this->username]])
                 ->one();
         }
 

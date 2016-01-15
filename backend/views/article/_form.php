@@ -2,8 +2,8 @@
 
 use trntv\filekit\widget\Upload;
 use trntv\yii\datetime\DateTimeWidget;
-use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Article */
@@ -22,10 +22,10 @@ use yii\bootstrap\ActiveForm;
         ->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(
-            $categories,
-            'id',
-            'title'
-        ), ['prompt'=>'']) ?>
+        $categories,
+        'id',
+        'title'
+    ), ['prompt' => '']) ?>
 
     <?php echo $form->field($model, 'body')->widget(
         \yii\imperavi\Widget::className(),

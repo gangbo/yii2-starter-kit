@@ -9,6 +9,7 @@
         <i class="fa fa-clock-o"></i>
         <?php echo Yii::$app->formatter->asRelativeTime($model->created_at) ?>
     </span>
+
     <h3 class="timeline-header">
         <?php echo Yii::t('backend', 'You have new event') ?>
     </h3>

@@ -23,7 +23,7 @@ class ArticleController extends Controller
         $dataProvider->sort = [
             'defaultOrder' => ['created_at' => SORT_DESC]
         ];
-        return $this->render('index', ['dataProvider'=>$dataProvider]);
+        return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
     /**
@@ -33,13 +33,13 @@ class ArticleController extends Controller
      */
     public function actionView($slug)
     {
-        $model = Article::find()->published()->andWhere(['slug'=>$slug])->one();
+        $model = Article::find()->published()->andWhere(['slug' => $slug])->one();
         if (!$model) {
             throw new NotFoundHttpException;
         }
 
         $viewFile = $model->view ?: 'view';
-        return $this->render($viewFile, ['model'=>$model]);
+        return $this->render($viewFile, ['model' => $model]);
     }
 
     public function actionAttachmentDownload($id)

@@ -2,13 +2,13 @@
 
 namespace backend\controllers;
 
-use Yii;
-use common\models\ArticleCategory;
 use backend\models\search\ArticleCategorySearch;
+use common\models\ArticleCategory;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ArticleCategoryController implements the CRUD actions for ArticleCategory model.

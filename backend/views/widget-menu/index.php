@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\WidgetMenuSearch */
@@ -24,19 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'title',
             'key',
             [
-                'class'=>\common\grid\EnumColumn::className(),
-                'attribute'=>'status',
-                'enum'=>[
+                'class' => \common\grid\EnumColumn::className(),
+                'attribute' => 'status',
+                'enum' => [
                     Yii::t('backend', 'Disabled'),
                     Yii::t('backend', 'Enabled')
                 ],
             ],
-
-            ['class' => 'yii\grid\ActionColumn', 'template'=>'{update} {delete}'],
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}'],
         ],
     ]); ?>
 

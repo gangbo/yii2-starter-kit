@@ -25,7 +25,7 @@ class KeyStorageItem extends \yii\db\ActiveRecord
     {
         return [
             [
-              'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::className(),
             ],
         ];
     }
@@ -37,7 +37,7 @@ class KeyStorageItem extends \yii\db\ActiveRecord
     {
         return [
             [['key', 'value'], 'required'],
-            [['key'], 'string', 'max'=>128],
+            [['key'], 'string', 'max' => 128],
             [['value', 'comment'], 'safe'],
             [['key'], 'unique']
         ];

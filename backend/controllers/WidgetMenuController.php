@@ -2,12 +2,12 @@
 
 namespace backend\controllers;
 
-use Yii;
-use common\models\WidgetMenu;
 use backend\models\search\WidgetMenuSearch;
+use common\models\WidgetMenu;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * WidgetMenuController implements the CRUD actions for WidgetMenu model.

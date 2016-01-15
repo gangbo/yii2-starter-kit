@@ -1,9 +1,9 @@
 <?php
 namespace common\components\keyStorage;
 
+use Yii;
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
-use Yii;
 
 /**
  * Class KeyStorage
@@ -136,7 +136,7 @@ class KeyStorage extends Component
     public function remove($key)
     {
         unset($this->values[$key]);
-        return call_user_func($this->modelClass.'::deleteAll', ['key' => $key]);
+        return call_user_func($this->modelClass . '::deleteAll', ['key' => $key]);
     }
 
     /**
@@ -155,8 +155,8 @@ class KeyStorage extends Component
      */
     protected function getModel($key)
     {
-        $query = call_user_func($this->modelClass.'::find');
-        return $query->where(['key'=>$key])->select(['key', 'value'])->one();
+        $query = call_user_func($this->modelClass . '::find');
+        return $query->where(['key' => $key])->select(['key', 'value'])->one();
     }
 
     /**

@@ -2,12 +2,12 @@
 
 namespace backend\controllers;
 
-use Yii;
-use common\models\KeyStorageItem;
 use backend\models\search\KeyStorageItemSearch;
+use common\models\KeyStorageItem;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * KeyStorageController implements the CRUD actions for KeyStorageItem model.
@@ -35,7 +35,7 @@ class KeyStorageController extends Controller
         $searchModel = new KeyStorageItemSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = [
-            'defaultOrder'=>['key'=>SORT_DESC]
+            'defaultOrder' => ['key' => SORT_DESC]
         ];
         return $this->render('index', [
             'searchModel' => $searchModel,

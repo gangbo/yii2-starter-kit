@@ -28,6 +28,14 @@ class UserProfile extends \yii\db\ActiveRecord
 
     public $picture;
 
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%user_profile}}';
+    }
+
     public function behaviors()
     {
         return [
@@ -40,15 +48,6 @@ class UserProfile extends \yii\db\ActiveRecord
         ];
     }
 
-
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%user_profile}}';
-    }
-
     /**
      * @inheritdoc
      */
@@ -57,7 +56,7 @@ class UserProfile extends \yii\db\ActiveRecord
         return [
             [['user_id'], 'required'],
             [['user_id', 'gender'], 'integer'],
-            [['gender'], 'in', 'range'=>[NULL, self::GENDER_FEMALE, self::GENDER_MALE]],
+            [['gender'], 'in', 'range' => [null, self::GENDER_FEMALE, self::GENDER_MALE]],
             [['firstname', 'middlename', 'lastname', 'avatar_path', 'avatar_base_url'], 'string', 'max' => 255],
             ['locale', 'default', 'value' => Yii::$app->language],
             ['locale', 'in', 'range' => array_keys(Yii::$app->params['availableLocales'])],

@@ -15,7 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <p>
-        <?php echo Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?php echo Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id],
+            ['class' => 'btn btn-primary']) ?>
         <?php echo Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [

@@ -59,18 +59,19 @@ $config = [
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
-                'db' => [
-                    'class' => 'yii\log\DbTarget',
-                    'levels' => ['error', 'warning'],
-                    'except' => ['yii\web\HttpException:*', 'yii\i18n\I18N\*'],
+                'file' => [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => YII_DEBUG ? ['error', 'warning', 'info', 'trace', 'profile'] : ['error', 'warning'],
+                    'categories' => [],
+                    'logFile' => getenv('LOG_FILE_PATH') ?: null,
                     'prefix' => function () {
                         $url = !Yii::$app->request->isConsoleRequest ? Yii::$app->request->getUrl() : null;
                         return sprintf('[%s][%s]', Yii::$app->id, $url);
                     },
                     'logVars' => [],
-                    'logTable' => '{{%system_log}}'
-                ]
+                ],
             ],
+
         ],
         'i18n' => [
             'translations' => [
@@ -88,16 +89,6 @@ $config = [
                     ],
                     'on missingTranslation' => ['\backend\modules\i18n\Module', 'missingTranslation']
                 ],
-                /* Uncomment this code to use DbMessageSource
-                 '*'=> [
-                    'class' => 'yii\i18n\DbMessageSource',
-                    'sourceMessageTable'=>'{{%i18n_source_message}}',
-                    'messageTable'=>'{{%i18n_message}}',
-                    'enableCaching' => YII_ENV_DEV,
-                    'cachingDuration' => 3600,
-                    'on missingTranslation' => ['\backend\modules\i18n\Module', 'missingTranslation']
-                ],
-                */
             ],
         ],
         'fileStorage' => [
@@ -148,11 +139,23 @@ $config = [
 ];
 
 if (YII_ENV_PROD) {
-    $config['components']['log']['targets']['email'] = [
-        'class' => 'yii\log\EmailTarget',
-        'except' => ['yii\web\HttpException:*'],
-        'levels' => ['error', 'warning'],
-        'message' => ['from' => getenv('ROBOT_EMAIL'), 'to' => getenv('ADMIN_EMAIL')]
+    $config['components']['log'] = [
+        'traceLevel' => YII_DEBUG ? 3 : 0,
+        'targets' => [
+            'file' => [
+                'class' => 'yii\log\SyslogTarget',
+                'levels' => YII_DEBUG ? ['error', 'warning', 'info', 'trace', 'profile'] : ['error', 'warning'],
+                'identity' => 'yii2app',
+                'facility' => LOG_LOCAL7,
+                'categories' => [],
+                'prefix' => function () {
+                    $url = !Yii::$app->request->isConsoleRequest ? Yii::$app->request->getUrl() : null;
+                    return sprintf('[%s][%s]', Yii::$app->id, $url);
+                },
+                'logVars' => [],
+            ],
+        ],
+
     ];
 }
 

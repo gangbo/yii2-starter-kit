@@ -1,8 +1,8 @@
 <?php
 namespace frontend\controllers;
 
-use Yii;
 use frontend\models\ContactForm;
+use Yii;
 use yii\web\Controller;
 
 /**
@@ -23,9 +23,9 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null
             ],
-            'set-locale'=>[
-                'class'=>'common\actions\SetLocaleAction',
-                'locales'=>array_keys(Yii::$app->params['availableLocales'])
+            'set-locale' => [
+                'class' => 'common\actions\SetLocaleAction',
+                'locales' => array_keys(Yii::$app->params['availableLocales'])
             ]
         ];
     }
@@ -41,14 +41,15 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if ($model->contact(Yii::$app->params['adminEmail'])) {
                 Yii::$app->getSession()->setFlash('alert', [
-                    'body'=>Yii::t('frontend', 'Thank you for contacting us. We will respond to you as soon as possible.'),
-                    'options'=>['class'=>'alert-success']
+                    'body' => Yii::t('frontend',
+                        'Thank you for contacting us. We will respond to you as soon as possible.'),
+                    'options' => ['class' => 'alert-success']
                 ]);
                 return $this->refresh();
             } else {
                 Yii::$app->getSession()->setFlash('alert', [
-                    'body'=>\Yii::t('frontend', 'There was an error sending email.'),
-                    'options'=>['class'=>'alert-danger']
+                    'body' => \Yii::t('frontend', 'There was an error sending email.'),
+                    'options' => ['class' => 'alert-danger']
                 ]);
             }
         }
@@ -56,5 +57,16 @@ class SiteController extends Controller
         return $this->render('contact', [
             'model' => $model
         ]);
+    }
+
+    public function actionTest()
+    {
+        return '##';
+    }
+
+    public function actionFlush()
+    {
+        $yac = new \Yac();
+        return $yac->flush();
     }
 }

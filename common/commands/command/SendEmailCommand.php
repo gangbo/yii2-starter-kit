@@ -51,6 +51,6 @@ class SendEmailCommand extends BaseCommand
      */
     public function isHtml()
     {
-        return (bool) $this->html;
+        return (bool)$this->html;
     }
 }

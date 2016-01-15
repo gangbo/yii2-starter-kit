@@ -2,8 +2,8 @@
 namespace backend\models;
 
 use common\models\User;
-use yii\base\Model;
 use Yii;
+use yii\base\Model;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -27,31 +27,43 @@ class UserForm extends Model
         return [
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass'=>'\common\models\User', 'filter' => function ($query) {
-                if (!$this->getModel()->isNewRecord) {
-                    $query->andWhere(['not', ['id'=>$this->getModel()->id]]);
+            [
+                'username',
+                'unique',
+                'targetClass' => '\common\models\User',
+                'filter' => function ($query) {
+                    if (!$this->getModel()->isNewRecord) {
+                        $query->andWhere(['not', ['id' => $this->getModel()->id]]);
+                    }
                 }
-            }],
+            ],
             ['username', 'string', 'min' => 2, 'max' => 255],
-
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
-            ['email', 'unique', 'targetClass'=> '\common\models\User', 'filter' => function ($query) {
-                if (!$this->getModel()->isNewRecord) {
-                    $query->andWhere(['not', ['id'=>$this->getModel()->id]]);
+            [
+                'email',
+                'unique',
+                'targetClass' => '\common\models\User',
+                'filter' => function ($query) {
+                    if (!$this->getModel()->isNewRecord) {
+                        $query->andWhere(['not', ['id' => $this->getModel()->id]]);
+                    }
                 }
-            }],
-
-            ['password', 'required', 'on'=>'create'],
+            ],
+            ['password', 'required', 'on' => 'create'],
             ['password', 'string', 'min' => 6],
-
             [['status'], 'boolean'],
-            [['roles'], 'each',
-                'rule' => ['in', 'range' => ArrayHelper::getColumn(
-                    Yii::$app->authManager->getRoles(),
-                    'name'
-                )]
+            [
+                ['roles'],
+                'each',
+                'rule' => [
+                    'in',
+                    'range' => ArrayHelper::getColumn(
+                        Yii::$app->authManager->getRoles(),
+                        'name'
+                    )
+                ]
             ],
         ];
     }

@@ -70,11 +70,11 @@ class DefaultController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('alert', [
-                'options' => ['class'=>'alert-success'],
+                'options' => ['class' => 'alert-success'],
                 'body' => Yii::t('frontend', 'Your account has been successfully saved')
             ]);
             return $this->refresh();
         }
-        return $this->render('index', ['model'=>$model]);
+        return $this->render('index', ['model' => $model]);
     }
 }
