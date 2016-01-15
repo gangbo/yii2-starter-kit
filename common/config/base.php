@@ -1,10 +1,10 @@
 <?php
 $config = [
-    'name'=>'Yii2 Starter Kit',
-    'vendorPath'=>dirname(dirname(__DIR__)).'/vendor',
+    'name' => 'Yii2 Starter Kit',
+    'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
-    'sourceLanguage'=>'en-US',
-    'language'=>'en-US',
+    'sourceLanguage' => 'en-US',
+    'language' => 'en-US',
     'bootstrap' => ['log'],
     'components' => [
 
@@ -15,12 +15,10 @@ $config = [
             'assignmentTable' => '{{%rbac_auth_assignment}}',
             'ruleTable' => '{{%rbac_auth_rule}}'
         ],
-
         'cache' => [
             'class' => 'yii\caching\FileCache',
             'cachePath' => '@common/runtime/cache'
         ],
-
         'commandBus' => [
             'class' => '\trntv\tactician\Tactician',
             'commandNameExtractor' => '\League\Tactician\Handler\CommandNameExtractor\ClassNameExtractor',
@@ -30,11 +28,9 @@ $config = [
                 'common\commands\command\AddToTimelineCommand' => '\common\commands\handler\AddToTimelineHandler',
             ]
         ],
-
-        'formatter'=>[
-            'class'=>'yii\i18n\Formatter'
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter'
         ],
-
         'glide' => [
             'class' => 'trntv\glide\components\Glide',
             'sourcePath' => '@storage/web/source',
@@ -43,7 +39,6 @@ $config = [
             'maxImageSize' => getenv('GLIDE_MAX_IMAGE_SIZE'),
             'signKey' => getenv('GLIDE_SIGN_KEY')
         ],
-
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'useFileTransport' => YII_ENV_DEV,
@@ -52,9 +47,8 @@ $config = [
                 'from' => getenv('ADMIN_EMAIL')
             ]
         ],
-
-        'db'=>[
-            'class'=>'yii\db\Connection',
+        'db' => [
+            'class' => 'yii\db\Connection',
             'dsn' => getenv('DB_DSN'),
             'username' => getenv('DB_USERNAME'),
             'password' => getenv('DB_PASSWORD'),
@@ -62,37 +56,35 @@ $config = [
             'charset' => 'utf8',
             'enableSchemaCache' => YII_ENV_PROD,
         ],
-
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
-                'db'=>[
+                'db' => [
                     'class' => 'yii\log\DbTarget',
                     'levels' => ['error', 'warning'],
-                    'except'=>['yii\web\HttpException:*', 'yii\i18n\I18N\*'],
-                    'prefix'=>function () {
+                    'except' => ['yii\web\HttpException:*', 'yii\i18n\I18N\*'],
+                    'prefix' => function () {
                         $url = !Yii::$app->request->isConsoleRequest ? Yii::$app->request->getUrl() : null;
                         return sprintf('[%s][%s]', Yii::$app->id, $url);
                     },
-                    'logVars'=>[],
-                    'logTable'=>'{{%system_log}}'
+                    'logVars' => [],
+                    'logTable' => '{{%system_log}}'
                 ]
             ],
         ],
-
         'i18n' => [
             'translations' => [
-                'app'=>[
+                'app' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath'=>'@common/messages',
+                    'basePath' => '@common/messages',
                 ],
-                '*'=> [
+                '*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath'=>'@common/messages',
-                    'fileMap'=>[
-                        'common'=>'common.php',
-                        'backend'=>'backend.php',
-                        'frontend'=>'frontend.php',
+                    'basePath' => '@common/messages',
+                    'fileMap' => [
+                        'common' => 'common.php',
+                        'backend' => 'backend.php',
+                        'frontend' => 'frontend.php',
                     ],
                     'on missingTranslation' => ['\backend\modules\i18n\Module', 'missingTranslation']
                 ],
@@ -108,7 +100,6 @@ $config = [
                 */
             ],
         ],
-
         'fileStorage' => [
             'class' => '\trntv\filekit\Storage',
             'baseUrl' => '@storageUrl/source',
@@ -121,11 +112,9 @@ $config = [
                 'component' => 'fileStorage'
             ]
         ],
-
         'keyStorage' => [
             'class' => 'common\components\keyStorage\KeyStorage'
         ],
-
         'urlManagerBackend' => \yii\helpers\ArrayHelper::merge(
             [
                 'hostInfo' => Yii::getAlias('@backendUrl')
@@ -140,7 +129,7 @@ $config = [
         ),
         'urlManagerStorage' => \yii\helpers\ArrayHelper::merge(
             [
-                'hostInfo'=>Yii::getAlias('@storageUrl')
+                'hostInfo' => Yii::getAlias('@storageUrl')
             ],
             require(Yii::getAlias('@storage/config/_urlManager.php'))
         )
@@ -148,10 +137,10 @@ $config = [
     'params' => [
         'adminEmail' => getenv('ADMIN_EMAIL'),
         'robotEmail' => getenv('ROBOT_EMAIL'),
-        'availableLocales'=>[
-            'en-US'=>'English (US)',
-            'ru-RU'=>'Русский (РФ)',
-            'uk-UA'=>'Українська (Україна)',
+        'availableLocales' => [
+            'en-US' => 'English (US)',
+            'ru-RU' => 'Русский (РФ)',
+            'uk-UA' => 'Українська (Україна)',
             'es' => 'Español',
             'zh-CN' => '简体中文',
         ],
@@ -170,7 +159,7 @@ if (YII_ENV_PROD) {
 if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
-        'class'=>'yii\gii\Module'
+        'class' => 'yii\gii\Module'
     ];
 
     $config['components']['cache'] = [
